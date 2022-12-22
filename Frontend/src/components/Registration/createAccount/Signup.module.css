@@ -1,0 +1,76 @@
+.boxComponents {
+  margin-left: 50% !important;
+  width: 550px !important;
+  margin-top: -30% !important;
+}
+
+.star {
+  color: rgb(218, 12, 12);
+}
+
+.submitbtn {
+  background-color: rgb(255, 153, 0) !important ;
+  color: white !important;
+  font-weight: 400 !important;
+  height: 2rem;
+  width: 380px !important;
+  margin-left: 95px !important;
+  margin-bottom: 1;
+  overflow: hidden;
+}
+
+.topHeading {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  text-align: center;
+  color: orange;
+}
+
+.lineheading {
+  width: 98%;
+  border: 1px solid orange;
+}
+
+.textAreaDiv {
+  padding: 1%;
+  gap: 2%;
+  color: rgb(87, 84, 84);
+  padding: 2%;
+  border: 2px solid transparent;
+  width: 50%;
+}
+
+.textdiv {
+  font-size: large;
+  line-height: 25px;
+  border: 2px transparent;
+  margin-left: 2%;
+  width: 100%;
+}
+
+.inputlablename {
+  margin-top: 5%;
+}
+.inputlablemobile {
+  margin-top: 5%;
+  margin-left: 0.5%;
+}
+
+.inputlablepass {
+  margin-top: 5%;
+  margin-left: 2%;
+}
+.TextFieldarea {
+  height: 35px;
+  width: 380px;
+  margin-left: 2%;
+}
+
+.inputlableemail {
+  margin-top: 5%;
+  margin-left: 8.2%;
+}
+.inputlablepassc {
+  margin-top: 3%;
+  margin-left: 2.2%;
+}
