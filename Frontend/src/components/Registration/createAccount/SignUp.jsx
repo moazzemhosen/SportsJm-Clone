@@ -37,7 +37,7 @@ export const Signup = () => {
     const headers = { "Content-Type": "application/json" };
     try {
       const resp = await axios.post(
-        "http://localhost:8080/signup",
+        "https://sportsjm-backend.onrender.com/signup",
         values,
         { headers: headers }
       );
