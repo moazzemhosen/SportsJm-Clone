@@ -12,6 +12,18 @@ export const Caps = () => {
   const [limit, setLimit] = useState(6);
   const [progress,setProgress]=useState(false)
 
+  const handleclick=(el)=>{
+    alert(el.title)
+    
+  }
+  const incLimit=()=>{
+    setProgress(!progress)
+    setTimeout(() => {
+      setProgress(false)
+      setLimit(limit + 3)
+    },500);
+  }
+
   useEffect(() => {
     const nData = caps.map((e) => {
       return { ...e, isVisible: true };
@@ -27,17 +39,7 @@ export const Caps = () => {
   const addtocartarr = (el) => {
     dispatch({ type: "ADDCART", payload: el });
   };
-  const handleclick=(el)=>{
-    alert(el.title)
-    
-  }
-  const incLimit=()=>{
-    setProgress(!progress)
-    setTimeout(() => {
-      setProgress(false)
-      setLimit(limit + 3)
-    },200);
-  }
+  
 
 
   return (
@@ -92,7 +94,7 @@ export const Caps = () => {
       </div>
       <div className="show-btn">
           {
-           limit>=data.length ? "":<button  onClick={incLimit}>{progress ? <CircularProgress /> : " Loadmore..."}</button>
+           limit>=data.length ? " ":<Button className="loading"  onClick={incLimit}>{progress ? <CircularProgress  />: ` Load More...`}</Button>
           }
            
         </div>

@@ -4,10 +4,24 @@ import "./sports.css";
 import { Footer } from "../footer/footer";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { Button, CircularProgress } from "@mui/material";
 
 export const Abtrainers = () => {
   const [data, setData] = useState([]);
-  const [limit,setLimit]=useState(0)
+  const [limit, setLimit] = useState(1);
+  const [progress,setProgress]=useState(false)
+
+  const handleclick=(el)=>{
+    alert(el.title)
+    
+  }
+  const incLimit=()=>{
+    setProgress(!progress)
+    setTimeout(() => {
+      setProgress(false)
+      setLimit(limit + 3)
+    },500);
+  }
 
   useEffect(() => {
     const nData = AbTrainers.map((e) => {
@@ -40,7 +54,7 @@ export const Abtrainers = () => {
                 <>
                   <div>
                     {/* <Link to={`/books/${el.id}`} key={el.id}> */}
-                    <div className="eachdiv">
+                    <div className="eachdiv" onClick={()=>handleclick(el)}>
                       <div className="productimgdiv">
                         <img src={el.img} />
                       </div>
@@ -68,15 +82,18 @@ export const Abtrainers = () => {
                     </div>
                     {/* </Link> */}
                   </div>
-                  <div>
-                  <button onClick={()=>setLimit(limit+3)}>Loadmore...</button>
-                  </div>
                 </>
               );
             }
           })}
         </div>
       </div>
+      <div className="show-btn">
+          {
+           limit>=data.length ? " ":<Button className="loading"  onClick={incLimit}>{progress ? <CircularProgress />: ` Load More...`}</Button>
+          }
+           
+        </div>
       <Footer></Footer>
     </>
   );

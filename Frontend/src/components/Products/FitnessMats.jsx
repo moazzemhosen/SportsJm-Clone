@@ -7,9 +7,24 @@ import { Footer } from "../footer/footer";
 import './sports.css'
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux";
+import { Button, CircularProgress } from "@mui/material";
 
 export const Fitnessmats = () => {
   const [data, setData] = useState([]);
+  const [limit, setLimit] = useState(6);
+  const [progress,setProgress]=useState(false)
+
+  const handleclick=(el)=>{
+    alert(el.title)
+    
+  }
+  const incLimit=()=>{
+    setProgress(!progress)
+    setTimeout(() => {
+      setProgress(false)
+      setLimit(limit + 3)
+    },500);
+  }
 
   useEffect(() => {
     const nData = FitnessMat.map((e) => {
@@ -35,13 +50,13 @@ export const Fitnessmats = () => {
         </div>
 
         <div className="grid-format">
-          {data.map((el) => {
+          {data.slice(0,limit).map((el) => {
             if (el.isVisible) {
               return (
                 <>
                   <div>
                     {/* <Link to={`/books/${el.id}`} key={el.id}> */}
-                    <div className="eachdiv">
+                    <div className="eachdiv" onClick={()=>handleclick(el)}>
                       <div className="productimgdiv">
                         <img src={el.img} />
                       </div>
@@ -73,6 +88,12 @@ export const Fitnessmats = () => {
           })}
         </div>
       </div>
+      <div className="show-btn">
+          {
+           limit>=data.length ? " ":<Button className="loading"  onClick={incLimit}>{progress ? <CircularProgress  />: ` Load More...`}</Button>
+          }
+           
+        </div>
       <Footer></Footer>
     </>
   );
