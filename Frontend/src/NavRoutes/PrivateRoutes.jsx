@@ -1,10 +1,12 @@
 import { useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
-export const ProtectedRoute = ({ children }) => {
-  const myState = useSelector((state) => state.loginReducer);
+import { Navigate,useLocation } from "react-router-dom";
 
-  if (!myState.isLoggedIn) {
-    return <Navigate to={"/login"} replace={true} />;
+export const ProtectedRoute = ({ children }) => {
+  const myState = useSelector((state) => state.loginReducer.isLoggedIn);
+  const location=useLocation()
+
+  if (!myState) {
+    return <Navigate to={"/login"} state={{from:location}} replace={true} />;
   }
   return children;
 };

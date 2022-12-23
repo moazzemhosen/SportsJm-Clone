@@ -41,6 +41,7 @@ import { Cart } from "../components/CartHandler/Cart";
 import { Checkout } from "../components/CheckoutHandler/CheckoutHandler";
 import { ProtectedRoute } from "./PrivateRoutes";
 import { Orderplace } from "../components/ThankyouHandler/Orderplace";
+import SinglePage from "./components/SinglePage/SinglePage";
 
 export const Routing = () => {
   return (
@@ -134,6 +135,7 @@ export const Routing = () => {
             </ProtectedRoute>
           }
         ></Route>
+        <Route path=":/id" element={<SinglePage/>}></Route>
       </Routes>
     </>
   );

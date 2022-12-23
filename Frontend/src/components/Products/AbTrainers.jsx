@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 
 export const Abtrainers = () => {
   const [data, setData] = useState([]);
+  const [limit,setLimit]=useState(0)
 
   useEffect(() => {
     const nData = AbTrainers.map((e) => {
@@ -33,7 +34,7 @@ export const Abtrainers = () => {
         </div>
 
         <div className="grid-format">
-          {data.map((el) => {
+          {data.slice(0,10).map((el) => {
             if (el.isVisible) {
               return (
                 <>
@@ -66,6 +67,9 @@ export const Abtrainers = () => {
                       </div>
                     </div>
                     {/* </Link> */}
+                  </div>
+                  <div>
+                  <button onClick={()=>setLimit(limit+3)}>Loadmore...</button>
                   </div>
                 </>
               );

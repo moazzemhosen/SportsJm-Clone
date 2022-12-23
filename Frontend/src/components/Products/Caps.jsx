@@ -1,15 +1,16 @@
-
-
 import { Sidebar } from "../Sidebar/sidebar";
-import { caps } from '../../configs/Caps'
+import { caps } from "../../configs/Caps";
 // import { Link } from "react-router-dom";
-import './sports.css'
+import "./sports.css";
 import { Footer } from "../footer/footer";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { Button, CircularProgress } from "@mui/material";
 
-export const Caps  = () => {
+export const Caps = () => {
   const [data, setData] = useState([]);
+  const [limit, setLimit] = useState(6);
+  const [progress,setProgress]=useState(false)
 
   useEffect(() => {
     const nData = caps.map((e) => {
@@ -26,6 +27,19 @@ export const Caps  = () => {
   const addtocartarr = (el) => {
     dispatch({ type: "ADDCART", payload: el });
   };
+  const handleclick=(el)=>{
+    alert(el.title)
+    
+  }
+  const incLimit=()=>{
+    setProgress(!progress)
+    setTimeout(() => {
+      setProgress(false)
+      setLimit(limit + 3)
+    },200);
+  }
+
+
   return (
     <>
       <div className="main-container">
@@ -35,13 +49,13 @@ export const Caps  = () => {
         </div>
 
         <div className="grid-format">
-          {data.map((el) => {
+          {data.slice(0, limit).map((el) => {
             if (el.isVisible) {
               return (
                 <>
                   <div>
                     {/* <Link to={`/books/${el.id}`} key={el.id}> */}
-                    <div className="eachdiv">
+                    <div className="eachdiv" onClick={()=>handleclick(el)}>
                       <div className="productimgdiv">
                         <img src={el.img} />
                       </div>
@@ -61,7 +75,9 @@ export const Caps  = () => {
                           </p>
                         </div>
                         <div className="btn-cart">
-                          <button onClick={addtocartarr.bind(null, el)}>Cart</button>
+                          <Button variant="contained" color="primary" onClick={addtocartarr.bind(null, el)}>
+                            Cart
+                          </Button>
                         </div>
                       </div>
                     </div>
@@ -71,11 +87,16 @@ export const Caps  = () => {
               );
             }
           })}
+        
         </div>
       </div>
+      <div className="show-btn">
+          {
+           limit>=data.length ? "":<button  onClick={incLimit}>{progress ? <CircularProgress /> : " Loadmore..."}</button>
+          }
+           
+        </div>
       <Footer></Footer>
     </>
   );
 };
-
-

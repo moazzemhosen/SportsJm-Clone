@@ -8,7 +8,7 @@ import Grid from "@mui/material/Grid";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import style from "./login.module.css";
 import ClearIcon from "@mui/icons-material/Clear";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate,useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
@@ -18,6 +18,7 @@ import { useState } from "react";
 const theme = createTheme();
 
 export const Login = () => {
+  
   const myState = useSelector((state) => state.loginReducer);
   const [details, setDetails] = useState({
     email: "",
@@ -25,6 +26,7 @@ export const Login = () => {
   });
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location=useLocation();
   const loginHandle = async (e) => {
     e.preventDefault()
     const headers = { "Content-Type": "application/json" };
@@ -42,7 +44,10 @@ export const Login = () => {
       if(resp.status===200||201){
         console.log("payload",user)
         dispatch({ type: "LOGIN", payload:user });
-        navigate("/") 
+      
+
+          navigate(location?.state ? location.state.from.pathname:"/") 
+        
       }else
       throw new Error("Unable to login");
     } catch (error) {

@@ -1,6 +1,6 @@
 export const caps = [
     {
-      
+      id:1,
       title: "Speedo Plain Moulded Silicone Swimming Cap (Red)",
       desc: "Speedo Plain Moulded Silicone Swimming Cap (Red) ",
       img:
@@ -11,7 +11,7 @@ export const caps = [
       discount: "15% off",
     },
     {
-      
+      id:2,
       title: "Speedo Bubble Cap",
       desc: "Speedo Bubble Cap ",
       img:
@@ -22,7 +22,7 @@ export const caps = [
       discount: "13% off",
     },
     {
-      
+      id:3,
       title: "Speedo Multi Colour Silicon Swimming Cap",
       desc: "Speedo Multi Colour Silicon Swimming Cap ",
       img:
@@ -33,7 +33,7 @@ export const caps = [
       discount: "12% off",
     },
     {
-      
+      id:4,
       title: "Speedo Sea Squad Character Junior Cap (Red)",
       desc: "Speedo Sea Squad Character Junior Cap (Red) ",
       img:
@@ -44,7 +44,7 @@ export const caps = [
       discount: "0% off",
     },
     {
-      
+      id:5,
       title: "Speedo Plain Flat Silicone Junior Cap",
       desc: "Speedo Plain Flat Silicone Junior Cap ",
       img:
@@ -55,7 +55,7 @@ export const caps = [
       discount: "0% off",
     },
     {
-      
+      id:6,
       title: "Speedo Long Hair Cap",
       desc: "Speedo Long Hair Cap ",
       img:
@@ -66,7 +66,7 @@ export const caps = [
       discount: "0% off",
     },
     {
-      
+      id:7,
       title: "Speedo Plain Moulded Silicone Swimming Cap",
       desc:
         "\nPlain Moulded Silicone Cap is Available in a wide choice of colours. ",
@@ -78,7 +78,7 @@ export const caps = [
       discount: "0% off",
     },
     {
-      
+      id:8,
       title: "Speedo Multi Coloured Silicone Cap",
       desc: "Speedo Multi Coloured Silicone Cap ",
       img:
@@ -89,7 +89,7 @@ export const caps = [
       discount: "15% off",
     },
     {
-      
+      id:9,
       title: "Speedo Plain Silicone Moulded Junior Cap",
       desc:
         "\nPlain Moulded Silicone Junior is 3D Silicone cap for superior comfort. ",
@@ -101,7 +101,7 @@ export const caps = [
       discount: "15% off",
     },
     {
-      
+      id:10,
       title: "Head Silicone Junior Swimming Cap",
       desc: "\nHigh Quality Silicone, Tear resistant, Colour Fast.  ",
       img:
@@ -112,7 +112,7 @@ export const caps = [
       discount: "20% off",
     },
     {
-      
+      id:11,
       title: "Head Silicone Flat Swimming Cap",
       desc: "100% Graded Silicone, high quality swimming cap ",
       img:
@@ -123,7 +123,7 @@ export const caps = [
       discount: "20% off",
     },
     {
-      
+      id:12,
       title: "Zoggs Junior Swim Set (Pink)",
       desc: "Zoggs Junior Swim Set (Pink) ",
       img:
@@ -134,7 +134,7 @@ export const caps = [
       discount: "43% off",
     },
     {
-      
+      id:13,
       title: "Speedo Bubble Cap",
       desc: "Speedo Bubble Cap ",
       img:
@@ -145,7 +145,7 @@ export const caps = [
       discount: "10% off",
     },
     {
-      
+      id:14,
       title: "Speedo Multi Coloured (V2) Silicone Cap",
       desc: "\nStylish Silicone cap. Seamed 100% silicone cap.\n",
       img:
@@ -156,7 +156,7 @@ export const caps = [
       discount: "0% off",
     },
     {
-      
+      id:15,
       title: "Speedo Slogan Junior Swimming Cap",
       desc: "\nFun Speedo Slogan cap. ",
       img:
@@ -167,7 +167,7 @@ export const caps = [
       discount: "10% off",
     },
     {
-      
+      id:16,
       title: "Speedo Reversible Comfort Cap (S/Y)",
       desc:
         "\nNew reversible printed cap Monogram graphic print to co-ordinate with swim. Ideal for regular swimming . 100% silicone cap.\n",
@@ -179,7 +179,7 @@ export const caps = [
       discount: "0% off",
     },
     {
-      
+      id:17,
       title: "Speedo Reversible Comfort Cap (S/B)",
       desc:
         "\nNew reversible printed cap Monogram graphic print to co-ordinate with swim. Ideal for regular swimming . 100% silicone cap.\n",
@@ -191,7 +191,7 @@ export const caps = [
       discount: "0% off",
     },
     {
-      
+      id:18,
       title: "Adidas Silicon 3 Stripes Swimming Cap (White/Black)",
       desc: "Adidas Silicon 3 Stripes Swimming Cap (White/Black) ",
       img:
@@ -202,7 +202,7 @@ export const caps = [
       discount: "40% off",
     },
     {
-      
+      id:19,
       title: "Adidas Silicon 3 Stripes Swimming Cap (Black/White)",
       desc:
         "Built for the swimmers, the adidas Silicon 3S cap for the young ones. Made with 100% Silicon, it fits perfectly on your head with maximum grip. 3-Stripes design detailing on the top and adidas Performance logo on the front. ",
@@ -214,7 +214,7 @@ export const caps = [
       discount: "40% off",
     },
     {
-      
+      id:20,
       title: "Speedo Bubble Cap",
       desc: "Speedo Bubble Cap ",
       img:
@@ -225,7 +225,7 @@ export const caps = [
       discount: "0% off",
     },
     {
-      
+      id:21,
       title: "Speedo Plain Flat Silicone Cap (Red)",
       desc: "Speedo Plain Flat Silicone Cap (Red) ",
       img:
@@ -236,7 +236,7 @@ export const caps = [
       discount: "0% off",
     },
     {
-      
+      id:22,
       title: "Speedo Slogan Printed Silicone Cap (Black/White)",
       desc: "Speedo Slogan Printed Silicone Cap (Black/White) ",
       img:
@@ -247,7 +247,7 @@ export const caps = [
       discount: "0% off",
     },
     {
-      
+      id:23,
       title: "Speedo Plain Moulded Silicone Swimming Cap (Brown)",
       desc: "Speedo Plain Moulded Silicone Swimming Cap (Brown) ",
       img:
@@ -258,7 +258,7 @@ export const caps = [
       discount: "0% off",
     },
     {
-      
+      id:24,
       title: "Speedo Long Hair Cap (Black)",
       desc: "Speedo Long Hair Cap (Black) ",
       img:
@@ -269,7 +269,7 @@ export const caps = [
       discount: "0% off",
     },
     {
-      
+      id:25,
       title: "Speedo Plain Moulded Silicone Swimming Cap (Black)",
       desc: "Speedo Plain Moulded Silicone Swimming Cap (Black) ",
       img:
@@ -280,7 +280,7 @@ export const caps = [
       discount: "0% off",
     },
     {
-      
+      id:26,
       title: "Speedo Bubble Cap (Grey)",
       desc: "Speedo Bubble Cap (Grey) ",
       img:
