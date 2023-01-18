@@ -6,14 +6,18 @@ import { Basketballs } from '../../configs/Basketball'
 import './sports.css'
 import { Footer } from "../footer/footer";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Button, CircularProgress } from "@mui/material";
+import { Page } from "../PageComponent/Page";
 
 export const Basketball = () => {
-  const [data, setData] = useState([]);
+  const {search} = useSelector((state) => state.loginReducer);
+  const [data, setData] = useState(Basketballs);
+
+
   const [limit, setLimit] = useState(6);
   const [progress,setProgress]=useState(false)
-
+ //console.log("v",data,data.length);
   const handleclick=(el)=>{
     alert(el.title)
     
@@ -25,21 +29,21 @@ export const Basketball = () => {
       setLimit(limit + 3)
     },500);
   }
+
+
+  useEffect(()=>{
+      let updatedData = Basketballs.filter((e) => e.title.toLowerCase().indexOf(search.toLowerCase()) >= 0);
+      //console.log("up",updatedData,updatedData.length);
+      setData([...updatedData]);
+   
+  },[search])
+
+  const handleChange = (item) => {
+    setData(item);
+  };
   const dispatch = useDispatch();
   const addtocartarr = (el) => {
     dispatch({ type: "ADDCART", payload: el });
-  };
-
-  useEffect(() => {
-    const nData = Basketballs.map((e) => {
-      return { ...e, isVisible: true };
-    });
-    setData(nData);
-  }, []);
-
-  const handleChange = (item) => {
-    console.log("item:", item);
-    setData(item);
   };
   return (
     <>
@@ -50,42 +54,14 @@ export const Basketball = () => {
         </div>
 
         <div className="grid-format">
-          {data.slice(0,limit).map((el) => {
-            if (el.isVisible) {
-              return (
+        {data.slice(0, limit).map((el,i) => 
+               (
                 <>
-                  <div>
-                    {/* <Link to={`/books/${el.id}`} key={el.id}> */}
-                    <div className="eachdiv" onClick={()=>handleclick(el)}>
-                      <div className="productimgdiv">
-                        <img src={el.img} />
-                      </div>
-                      <div className="producttitle">
-                        <p key={el.id}>{el.title}</p>
-                      </div>
-                      <div className="price-button">
-                        <div className="price-list">
-                          <p className="productprice-linethrough" key={el.id}>
-                            ${el.price}
-                          </p>
-                          <p className="productprice" key={el.id}>
-                            ${el.mrp}
-                          </p>
-                          <p className="product-discount" key={el.id}>
-                            {el.discount}
-                          </p>
-                        </div>
-                        <div className="btn-cart">
-                          <button onClick={addtocartarr.bind(null, el)}>Cart</button>
-                        </div>
-                      </div>
-                    </div>
-                    {/* </Link> */}
-                  </div>
+                     <Page key={i} data={el} handleclick={handleclick} addtocartarr={addtocartarr}/>
                 </>
-              );
-            }
-          })}
+              )
+            
+          )}
         </div>
       </div>
       <div className="show-btn">

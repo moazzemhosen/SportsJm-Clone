@@ -100,3 +100,49 @@ button:hover{
     border: none;
     
 }
+/* Medium screens */
+@media all and (min-width: 651px) and (max-width: 900px) {
+    .product-sidebar{
+        width: 18%;
+        /* border: 1px solid rgb(26, 26, 46); */
+    }
+    .grid-format{
+        grid-template-columns: repeat(2,1fr);
+        width: 85%;
+    }
+    .show-btn{
+        /* border:1px solid red; */
+        width: 20%;
+        height: 30px;
+        margin: auto;
+        margin-top: 20px;
+    
+        
+    }
+  }
+  /* Small screens */
+  @media all and (min-width: 250px) and (max-width: 650px) {
+    .main-container{
+        flex-direction: column;
+        width: 100%;
+        /* border: 1px solid blue; */
+    }
+    .product-sidebar{
+        width: 100%;
+        /* border: 1px solid rgb(26, 26, 46); */
+    }
+    .grid-format{
+        grid-template-columns:1fr;
+        width: 85%;
+    }
+    .show-btn{
+        /* border:1px solid red; */
+        width: 50%;
+        height: 30px;
+        margin: auto;
+        margin-top: 20px;
+    
+        
+    }
+    }
+  

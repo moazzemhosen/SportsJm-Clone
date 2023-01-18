@@ -6,12 +6,17 @@ import { BalanceBoard } from '../../configs/Balance Board.js'
 import './sports.css'
 import { Footer } from "../footer/footer";
 import { useDispatch } from "react-redux";
+import { Page } from "../PageComponent/Page";
 
 export const Balanceboard  = () => {
   const dispatch = useDispatch();
   const addtocartarr = (el) => {
     dispatch({ type: "ADDCART", payload: el });
   };
+  const handleclick=(el)=>{
+    alert(el.title)
+    
+  }
 
   return (
     <>
@@ -22,30 +27,11 @@ export const Balanceboard  = () => {
         </div>
 
         <div className="grid-format">
-          {BalanceBoard.map((el) => {
+          {BalanceBoard.map((el,i) => {
             return (
               <>
-                <div >
-                  {/* <Link to={`/books/${el.id}`} key={el.id}> */}
-                  <div className="eachdiv">
-                    <div className='productimgdiv'>
-                      <img src={el.img} />
-                    </div>
-                    <div className='producttitle'>
-                      <p key={el.id}>{el.title}</p>
-                    </div>
-                    <div className="price-button">
-                      <div className="price-list">
-                        <p className="productprice-linethrough" key={el.id}>${el.price}</p>
-                        <p className="productprice" key={el.id}>${el.mrp}</p>
-                        <p className="product-discount" key={el.id}>{el.discount}</p>
-                      </div>
-                      <div className="btn-cart"><button onClick={addtocartarr.bind(null, el)}>Cart</button></div>
-                    </div>
-                  </div>
-                  {/* </Link> */}
-                </div>
-
+               
+               <Page key={i} data={el} handleclick={handleclick} addtocartarr={addtocartarr}/>
               </>
             )
           })}

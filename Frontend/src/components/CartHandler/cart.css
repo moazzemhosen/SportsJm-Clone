@@ -93,3 +93,8 @@
 .checkout {
   margin-left: 10rem;
 }
+.remove_item{
+  padding: 0px;
+  height: 20%;
+  margin: 60% 0% 0% 70%;
+}

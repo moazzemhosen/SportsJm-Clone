@@ -9,11 +9,13 @@ import ShoppingCartSharpIcon from "@mui/icons-material/ShoppingCartSharp";
 import { Link, useNavigate } from "react-router-dom";
 import { nav, navmain } from "../../Addressmaps/maps";
 import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
 
 export const NavBar = () => {
+  const [value,setValue]=useState("")
   const dispatch = useDispatch();
   const myState = useSelector((state) => state.loginReducer);
-  console.log("myState",myState);
+  //console.log("myState",myState);
   const navigate = useNavigate();
   const homeHandler = () => {
     navigate("/");
@@ -34,6 +36,14 @@ export const NavBar = () => {
     dispatch({ type: "LOGOUT" });
     navigate("/");
   };
+
+  const handlesearch=(e)=>{
+    //console.log("search",e.target.value);
+   setValue(e.target.value)
+  }
+  const handlesubmit=()=>{
+    dispatch({ type: "SEARCH" , payload:value});
+  }
   return (
     <>
       <div className={styles.navBarWrapper}>
@@ -91,9 +101,9 @@ export const NavBar = () => {
           </div>
           <div className={styles.navBarLayer2SearchDiv}>
             <div className={styles.navBarLayer2Search}>
-              <input className={styles.searchinput} type="text" placeholder="Search" />
+              <input className={styles.searchinput} type="text" placeholder="Search" value={value} onChange={(e)=>handlesearch(e)} />
             </div>
-            <div className={styles.navBarLayer2SearchIcon}>
+            <div className={styles.navBarLayer2SearchIcon} onClick={handlesubmit}>
               <SearchSharpIcon style={{ color: "grey" }} />
             </div>
           </div>

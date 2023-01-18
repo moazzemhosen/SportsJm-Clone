@@ -14,4 +14,9 @@ export const ADDCART = ()=>{
         type:"ADDCART"
     }
 }
+    export const SEARCH = ()=>{
+        return {
+            type:"SEARCH"
+        }
+}
 // Action Creators

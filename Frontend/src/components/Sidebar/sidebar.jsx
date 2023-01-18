@@ -3,6 +3,8 @@ import { navmain } from "../../Addressmaps/maps";
 import { Link } from "react-router-dom";
 
 export const Sidebar = ({ data, handleChange, d }) => {
+
+
   const handleSort = (e) => {
     const value = e.target.value;
     const nData = [...data];
@@ -12,49 +14,35 @@ export const Sidebar = ({ data, handleChange, d }) => {
         return Number(a.mrp) - Number(b.mrp);
       });
     } else {
+      console.log(value);
       nData.sort((a, b) => {
         return Number(b.mrp) - Number(a.mrp);
       });
     }
-    console.log(nData);
+    console.log("sort",nData);
     handleChange(nData);
   };
+
+
   const lowProduct = (e) => {
-    let nData = [...data];
-    const isChecked = e.target.checked;
-    if (isChecked) {
-      nData = nData.map((e) => {
-        if (e.mrp > 5000) {
-          return { ...e, isVisible: false };
-        } else {
-          return e;
-        }
-      });
-    } else {
-      nData = nData.map((e) => {
-        return { ...e, isVisible: true };
-      });
-    }
-    handleChange(nData);
+    
+    let nData=data.filter((e)=>e.mrp<5000)
+     console.log("n",nData ,nData.length);
+    handleChange([...nData]);
   };
   const highProduct = (d) => {
-    let nData = [...data];
-    const isChecked = d.target.checked;
-    if (isChecked) {
-      nData = nData.map((e) => {
-        if (e.mrp < 5000) {
-          return { ...e, isVisible: false };
-        } else {
-          return e;
-        }
-      });
-    } else {
-      nData = nData.map((e) => {
-        return { ...e, isVisible: true };
-      });
-    }
+    let nData=data.filter((e)=>e.mrp>5000)
+    console.log("n",nData ,nData.length);
+   handleChange([...nData]);
     handleChange(nData);
   };
+
+  const Discount=()=>{
+    let nData=data.filter((e)=>e.discount)
+    //console.log("n",nData ,nData.length);
+   handleChange([...nData]);
+    handleChange(nData);
+  }
   return (
     <>
       <div className={styles.mainScroller}>
@@ -94,8 +82,8 @@ export const Sidebar = ({ data, handleChange, d }) => {
         </div>
         
         <h4>Discounted Items</h4>
-        <div className={styles.discount  } >
-         <input type="checkbox" id="checkbox 3" name="discount" />
+        <div className={styles.discount} >
+         <input type="checkbox" id="checkbox 3" name="discount"  onChange={Discount} />
           <label for="checkbox 3">Discounted Items</label>
         </div>
       </div>

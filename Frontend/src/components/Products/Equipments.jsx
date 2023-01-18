@@ -7,6 +7,7 @@ import { Footer } from "../footer/footer";
 import './sports.css'
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux";
+import { Page } from "../PageComponent/Page";
 
 export const Equipments = () => {
   const [data, setData] = useState([]);
@@ -17,7 +18,10 @@ export const Equipments = () => {
     });
     setData(nData);
   }, []);
-
+  const handleclick=(el)=>{
+    alert(el.title)
+    
+  }
   const handleChange = (item) => {
     console.log("item:", item);
     setData(item);
@@ -39,34 +43,7 @@ export const Equipments = () => {
             if (el.isVisible) {
               return (
                 <>
-                  <div>
-                    {/* <Link to={`/books/${el.id}`} key={el.id}> */}
-                    <div className="eachdiv">
-                      <div className="productimgdiv">
-                        <img src={el.img} />
-                      </div>
-                      <div className="producttitle">
-                        <p key={el.id}>{el.title}</p>
-                      </div>
-                      <div className="price-button">
-                        <div className="price-list">
-                          <p className="productprice-linethrough" key={el.id}>
-                            ${el.price}
-                          </p>
-                          <p className="productprice" key={el.id}>
-                            ${el.mrp}
-                          </p>
-                          <p className="product-discount" key={el.id}>
-                            {el.discount}
-                          </p>
-                        </div>
-                        <div className="btn-cart">
-                          <button onClick={addtocartarr.bind(null, el)}>Cart</button>
-                        </div>
-                      </div>
-                    </div>
-                    {/* </Link> */}
-                  </div>
+                    <Page key={el.id} data={el} handleclick={handleclick} addtocartarr={addtocartarr}/>
                 </>
               );
             }

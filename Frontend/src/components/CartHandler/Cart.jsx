@@ -8,30 +8,43 @@ import { useSelector } from "react-redux";
 
 export const Cart = () => {
   const navigate = useNavigate();
-  const myState = useSelector((store) => store.loginReducer);
+  const [value,setValue]=useState(1)
+  const {cart} = useSelector((store) => store.loginReducer);
+  const [data,setData]=useState(cart||[])
   
   const goCheckout = () => {
     navigate("/Checkout");
   };
 
   let total = 0;
-  myState.cart.forEach((item) => {
+  cart.forEach((item) => {
     total = total + Number(item.price);
   });
+  const handleinc=()=>{
+setValue(value+1)
+  }
+  const handledec=()=>{
+    setValue(value-1)
+  }
+  const handleremove=(id)=>{
+    console.log(id);
+   let update= cart.filter((e)=>e.id!==id)
+   setData([...update])
+  }
 
   return (
     <div>
       <div className="cart-items">
         <div className="cart-items-header">Cart Items</div>
 
-        {cartItems.length == 0 && (
+        {cart.length == 0 && (
           <div className="cart-items-empty">No Items Are Added.</div>
         )}
 
         <div>
-          {console.log(myState.cart)}
-          {myState.cart.map((item) => (
-            <div key={item.id} className="cart-items-list">
+          {/* {console.log(cart)} */}
+          {data.length>0&&data.map((item,i) => (
+            <div key={i} className="cart-items-list">
               <img
                 className="cart-items-image"
                 src={item.img}
@@ -39,9 +52,12 @@ export const Cart = () => {
               />
               <div className="cart-items-name">{item.title}</div>
               <div className="cart-items-function">
-                <button className="cart-items-add">+</button>
-                <div className="cart-items-quantity-display">1</div>
-                <button className="cart-items-remove">-</button>
+                <button className="cart-items-add" onClick={handleinc}>+</button>
+                <div className="cart-items-quantity-display">{value }</div>
+                <button className="cart-items-remove" onClick={handledec}>-</button>
+              </div>
+              <div>
+              <button className="remove_item" onClick={()=>handleremove(item.id)}>remove</button>
               </div>
               <div className="cart-items-price">₹{item.price}</div>
             </div>
@@ -50,7 +66,7 @@ export const Cart = () => {
 
         <div className="cart-items-total-price-name">
           Total Price
-          <div className="cart-items-total-price">₹{total}</div>
+          <div className="cart-items-total-price">₹{total*value}</div>
           <div>
             <button className="checkout" onClick={goCheckout}>
               Proceed to CheckOut

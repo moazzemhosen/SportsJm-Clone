@@ -6,14 +6,18 @@ import { Bat } from '../../configs/Bats'
 import './sports.css'
 import { Footer } from "../footer/footer";
 import { useEffect, useState } from "react"
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Button, CircularProgress } from "@mui/material";
+import { Page } from "../PageComponent/Page";
 
 export const Bats = () => {
-  const [data, setData] = useState([]);
+  const {search} = useSelector((state) => state.loginReducer);
+  const [data, setData] = useState(Bat);
+
+
   const [limit, setLimit] = useState(6);
   const [progress,setProgress]=useState(false)
-
+ //console.log("v",data,data.length);
   const handleclick=(el)=>{
     alert(el.title)
     
@@ -26,15 +30,15 @@ export const Bats = () => {
     },500);
   }
 
-  useEffect(() => {
-    const nData = Bat.map((e) => {
-      return { ...e, isVisible: true };
-    });
-    setData(nData);
-  }, []);
+
+  useEffect(()=>{
+      let updatedData = Bat.filter((e) => e.title.toLowerCase().indexOf(search.toLowerCase()) >= 0);
+      //console.log("up",updatedData,updatedData.length);
+      setData([...updatedData]);
+   
+  },[search])
 
   const handleChange = (item) => {
-    console.log("item:", item);
     setData(item);
   };
   const dispatch = useDispatch();
@@ -50,42 +54,15 @@ export const Bats = () => {
         </div>
 
         <div className="grid-format">
-          {data.slice(0,limit).map((el) => {
-            if (el.isVisible) {
-              return (
+          {data.slice(0,limit).map((el) => 
+            
+               (
                 <>
-                  <div>
-                    {/* <Link to={`/books/${el.id}`} key={el.id}> */}
-                    <div className="eachdiv" onClick={()=>handleclick(el)}>
-                      <div className="productimgdiv">
-                        <img src={el.img} />
-                      </div>
-                      <div className="producttitle">
-                        <p key={el.id}>{el.title}</p>
-                      </div>
-                      <div className="price-button">
-                        <div className="price-list">
-                          <p className="productprice-linethrough" key={el.id}>
-                            ${el.price}
-                          </p>
-                          <p className="productprice" key={el.id}>
-                            ${el.mrp}
-                          </p>
-                          <p className="product-discount" key={el.id}>
-                            {el.discount}
-                          </p>
-                        </div>
-                        <div className="btn-cart">
-                          <button onClick={addtocartarr.bind(null, el)}>Cart</button>
-                        </div>
-                      </div>
-                    </div>
-                    {/* </Link> */}
-                  </div>
+                      <Page key={el.id} data={el} handleclick={handleclick} addtocartarr={addtocartarr}/>
                 </>
-              );
-            }
-          })}
+              )
+            
+          )}
         </div>
       </div>
       <div className="show-btn">

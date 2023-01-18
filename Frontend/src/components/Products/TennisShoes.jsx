@@ -6,12 +6,16 @@ import { TennisShoe } from '../../configs/TennisShoes'
 import { Footer } from "../footer/footer";
 import './sports.css'
 import { useDispatch } from "react-redux";
+import { Page } from "../PageComponent/Page";
 
 export const Tennisshoes = () => {
   const dispatch = useDispatch();
   const addtocartarr = (el) => {
     dispatch({ type: "ADDCART", payload: el });
   };
+  const handleclick=()=>{
+    
+  }
   return (
     <>
       <div className="main-container">
@@ -24,26 +28,7 @@ export const Tennisshoes = () => {
           {TennisShoe.map((el) => {
             return (
               <>
-                <div >
-                  {/* <Link to={`/books/${el.id}`} key={el.id}> */}
-                  <div className="eachdiv">
-                    <div className='productimgdiv'>
-                      <img src={el.img} />
-                    </div>
-                    <div className='producttitle'>
-                      <p key={el.id}>{el.title}</p>
-                    </div>
-                    <div className="price-button">
-                      <div className="price-list">
-                        <p className="productprice-linethrough" key={el.id}>${el.price}</p>
-                        <p className="productprice" key={el.id}>${el.mrp}</p>
-                        <p className="product-discount" key={el.id}>{el.discount}</p>
-                      </div>
-                      <div className="btn-cart"><button onClick={addtocartarr.bind(null, el)}>Cart</button></div>
-                    </div>
-                  </div>
-                  {/* </Link> */}
-                </div>
+                  <Page key={el.id} data={el} handleclick={handleclick} addtocartarr={addtocartarr}/>
               </>
             )
           })}

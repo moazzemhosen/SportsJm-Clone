@@ -192,3 +192,17 @@
 .navBarLayer3RoutesDivMaincontent a:hover {
   background-color: #ddd;
 }
+/* Small screens */
+@media all and (min-width: 250px) and (max-width: 650px) {
+  .navBarLayer2logo{
+display: none;
+  }
+ 
+ 
+  .navBarLayer3{
+  display: none;
+ }
+ .searchinput{
+  width: 100%;
+ }
+  }
