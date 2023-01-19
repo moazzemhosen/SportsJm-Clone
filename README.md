@@ -11,12 +11,11 @@ Buy Sports Goods Online India at best prices at Sportsjam.in India's leading Onl
 
 - react
 - react router dom
-- Chart.js
-- react-chartjs-2
+
 
 ### #UI
 
-- chakra UI
+- Matrial UI
 - react Icons
 
 ### #statemanagement
@@ -27,7 +26,6 @@ Buy Sports Goods Online India at best prices at Sportsjam.in India's leading Onl
 ### #async operations
 
 - axios
-- redux-thunk
 - uuid
 
 # BackEnd
